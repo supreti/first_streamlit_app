@@ -12,7 +12,7 @@ streamlit.dataframe(my_fruit_list)
 stremlit.header('Fruityvice fruit advice')
 
 import requests
-fruityvice_response = request.get('https://fruityvice.com/api/fruit/watermelon')
+fruityvice_response = requests.get('https://fruityvice.com/api/fruit/watermelon')
 stremlit.text(fruityvice_response.json())
 
 
