@@ -24,7 +24,12 @@ streamlit.header('Fruityvice Fruit advice!')
 fruit_choice = streamlit.text_input('what would you like information about?','kiwi')
 streamlit.write('The user entered',fruit_choice)
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-
+streamlit.text(fruityvice_response.json())
+# Make it look prettier
+#following line take the semi structurd json file and convert into flat table.
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+#dislpay data in tabluar format
+streamlit.dataframe(fruityvice_normalized)
 
 
 
