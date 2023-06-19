@@ -14,7 +14,7 @@ def insert_row_snowflake(new_fruit):
    with my_cnx.cursor() as my_cur:
       mysql = f"INSERT INTO fruit_load_list (fruit_name)  VALUES ('{new_fruit}')"
       my_cur.execute(mysql)
-      return "thanks for addming" +new_fruit
+      return "thanks for adding " +new_fruit + " to our list"
 
       
 def  get_fruit_load_list():
