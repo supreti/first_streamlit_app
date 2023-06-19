@@ -43,7 +43,6 @@ streamlit.dataframe(my_data_row)
 
 # prompt user to add new food
 fruit_to_add = streamlit.text_input('what fruit would you like to add?')
-print(f"Hello, My name is {name} and I'm {age} years old.")
 mysql = f"INSERT INTO fruit_load_list (fruit_name)  VALUES {fruit_to_add}"
 my_cur.execute (mysql)
 streamlit.text("Thank for adding" + fruit_to_add)
