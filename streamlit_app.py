@@ -31,7 +31,7 @@ streamlit.header('Fruityvice Fruit advice!')
 fruit_choice = streamlit.text_input('what would you like information about?','kiwi')
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-streamlit.text ="So you selected :"+fruit_choice
+streamlit.text(f"So you selected: {fruit_choice}")
 ####streamlit.text(fruityvice_response.json())
 # Make it look prettier
 #following line take the semi structurd json file and convert into flat table.
