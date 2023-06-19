@@ -18,19 +18,18 @@ my_fruit_list = my_fruit_list.set_index('Fruit')
 
 # let's put a pick list here so visitor can pick pick fruit they want
 fruits_selected = streamlit.multiselect("Pick some fruit:",list(my_fruit_list.index),['Avocado','Strawberries'])
-streamlit.header(fruits_selected)
+streamlit.header('List of fruits you have selected so far:'
 fruits_to_show =my_fruit_list.loc[fruits_selected]
 
-
 # Now display  the table on the page
-##streamlit.dataframe(my_fruit_list)
 streamlit.dataframe(fruits_to_show)
 
+# Time to get detail on fruits
 
 streamlit.header('Fruityvice fruit advice')
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-streamlit.text(fruityvice_response.json())
+#streamlit.text(fruityvice_response.json())
 # Make it look prettier
 #following line take the semi structurd json file and convert into flat table.
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
