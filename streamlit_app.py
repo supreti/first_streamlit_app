@@ -40,7 +40,7 @@ try:
     #following line take the semi structurd json file and convert into flat table.
     fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
     #dislpay data in tabluar format
-   streamlit.dataframe(fruityvice_normalized)
+    streamlit.dataframe(fruityvice_normalized)
 except URLError as e:
    streamlit.error()
 
