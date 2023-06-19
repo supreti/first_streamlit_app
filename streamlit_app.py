@@ -29,16 +29,21 @@ streamlit.dataframe(fruits_to_show)
 
 
 streamlit.header('Fruityvice Fruit advice!')
-fruit_choice = streamlit.text_input('what would you like information about?','kiwi')
+try:
+  fruit_choice = streamlit.text_input('what would you like information about?','kiwi')
+  if not fruit_choice:
+    streamlit.error("Please select a fruit to get information.")
+  else:
+    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+    ####streamlit.text(fruityvice_response.json())
+    # Make it look prettier
+    #following line take the semi structurd json file and convert into flat table.
+    fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+    #dislpay data in tabluar format
+   streamlit.dataframe(fruityvice_normalized)
+except URLError as e:
+   streamlit.error()
 
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-
-####streamlit.text(fruityvice_response.json())
-# Make it look prettier
-#following line take the semi structurd json file and convert into flat table.
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-#dislpay data in tabluar format
-streamlit.dataframe(fruityvice_normalized)
 streamlit.stop
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
