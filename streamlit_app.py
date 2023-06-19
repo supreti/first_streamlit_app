@@ -42,7 +42,7 @@ streamlit.text(my_data_row)
 streamlit.dataframe(my_data_row)
 
 # prompt user to add new food
-fruit_to_add = streamlit.text_input('what would you like information about?')
+fruit_to_add = streamlit.text_input('what fruit would you like to add?')
 my_curr.execute ("insert into fruit_load_list(fruit_name) values(fruit_to_add)")
 streamlit.text("Thank for adding" + fruit_to_add)
 
