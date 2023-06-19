@@ -1,7 +1,8 @@
 import streamlit
 import pandas
-import snowflake.connector
 import requests
+import snowflake.connector
+from urllib.error import URLError
 
 ###############################################
 # Build Menu
@@ -38,7 +39,7 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_c
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 #dislpay data in tabluar format
 streamlit.dataframe(fruityvice_normalized)
-
+streamlit.stop
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("select * from fruit_load_list")
