@@ -45,7 +45,7 @@ streamlit.dataframe(my_data_row)
 fruit_to_add = streamlit.text_input('what fruit would you like to add?')
 mysql = f"INSERT INTO fruit_load_list (fruit_name)  VALUES ('{fruit_to_add}')"
 streamlit.text(mysql)
-#my_cur.execute(mysql)
+my_cur.execute(mysql)
 streamlit.text(f"Thank for adding {fruit_to_add}")
 
 
